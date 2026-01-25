@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Industry</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      /* styles.css가 overflow hidden 같은 거 해도 버튼/메뉴가 안 잘리게 */
+      body,
+      .container,
+      .center {
+        overflow: visible !important;
+      }
+
+      /* 가운데 배치 */
+      .wrap {
+        width: min(860px, 100%);
+        margin: 0 auto;
+        padding-top: 10px;
+      }
+
+      .headline {
+        width: min(560px, 100%);
+        margin: 0 auto 14px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 650;
+        line-height: 1.15;
+        color: rgba(0, 0, 0, 0.85);
+      }
+
+      /* ✅ 드롭다운 + Next 한 줄 */
+      .dd-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 10px;
+      }
+
+      .dd {
+        width: 260px;
+        position: relative;
+      }
+
+      .dd-btn {
+        width: 100%;
+        height: 34px;
+        border-radius: 6px;
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        background: rgba(255, 255, 255, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        font-size: 12px;
+        cursor: pointer;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+      }
+
+      .caret {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #5b8dff;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-size: 10px;
+        line-height: 1;
+        flex: 0 0 auto;
+      }
+
+      /* 메뉴 */
+      .menu {
+        width: 100%;
+        margin-top: 8px;
+        border-radius: 6px;
+        border: 1px solid rgba(0, 0, 0, 0.35);
+        background: rgba(255, 255, 255, 0.92);
+        overflow: hidden;
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 36px;
+        z-index: 99999;
+      }
+      .menu.open {
+        display: block;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.8);
+        cursor: pointer;
+        user-select: none;
+      }
+      .row:first-child {
+        border-top: none;
+      }
+      .row:hover {
+        background: rgba(173, 223, 245, 0.55);
+      }
+
+      /* 체크박스는 기본 사용 (너가 원하면 커스텀으로 바꿔줄게) */
+      .row input {
+        width: 14px;
+        height: 14px;
+        accent-color: #5b8dff;
+      }
+
+      /* ✅ Next 버튼(드롭다운 옆) */
+      .next-inline {
+        width: 90px;
+        height: 34px;
+        border-radius: 10px;
+        background: #111;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        transition: background 0.2s ease;
+      }
+      .next-inline:hover {
+        background: #222;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+      <section class="center" style="width: 100%">
+        <div class="wrap">
+          <div class="headline">
+            Are you interested in a particular<br />
+            industry? We can help you learn about/<br />
+            invest in markets that attract you
+          </div>
+
+          <div class="dd-row">
+            <div class="dd">
+              <button
+                class="dd-btn"
+                id="ddBtn"
+                type="button"
+                aria-expanded="false"
+              >
+                <span id="ddLabel">Select</span>
+                <span class="caret">˅</span>
+              </button>
+
+              <div class="menu" id="menu">
+                <label class="row"
+                  ><input type="checkbox" value="Education" /> Education</label
+                >
+                <label class="row"
+                  ><input type="checkbox" value="Travel" /> Travel</label
+                >
+                <label class="row"
+                  ><input type="checkbox" value="Technology" />
+                  Technology</label
+                >
+                <label class="row"
+                  ><input type="checkbox" value="Banking" /> Banking</label
+                >
+                <label class="row"
+                  ><input type="checkbox" value="Pharma" /> Pharma</label
+                >
+              </div>
+            </div>
+
+            <!-- ✅ Next 버튼: 드롭다운 바로 옆 -->
+            <a class="next-inline" href="article1.html" id="nextBtn">Next</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const ddBtn = document.getElementById("ddBtn");
+      const menu = document.getElementById("menu");
+      const label = document.getElementById("ddLabel");
+      const checks = Array.from(
+        menu.querySelectorAll('input[type="checkbox"]')
+      );
+
+      function updateLabel() {
+        const selected = checks.filter((c) => c.checked).map((c) => c.value);
+        label.textContent = selected.length ? selected.join(", ") : "Select";
+        localStorage.setItem("industry_selected", JSON.stringify(selected));
+      }
+
+      // restore saved selections
+      const saved = JSON.parse(
+        localStorage.getItem("industry_selected") || "[]"
+      );
+      checks.forEach((c) => (c.checked = saved.includes(c.value)));
+      updateLabel();
+
+      ddBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        menu.classList.toggle("open");
+        ddBtn.setAttribute("aria-expanded", menu.classList.contains("open"));
+      });
+
+      checks.forEach((c) => c.addEventListener("change", updateLabel));
+
+      // click outside closes
+      document.addEventListener("click", (e) => {
+        if (!menu.contains(e.target) && !ddBtn.contains(e.target)) {
+          menu.classList.remove("open");
+          ddBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // next click saves (already saving on change, but safe)
+      document.getElementById("nextBtn").addEventListener("click", updateLabel);
+    </script>
+  </body>
+</html>

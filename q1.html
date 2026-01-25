@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question 1</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .qtop {
+        text-align: center;
+        margin-bottom: 18px;
+      }
+      .qtop p {
+        margin: 0;
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.65);
+      }
+      .qtop h3 {
+        margin: 12px 0 4px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .qtop .sub {
+        font-size: 10px;
+        color: rgba(0, 0, 0, 0.55);
+      }
+      .count {
+        text-align: center;
+        margin-top: 12px;
+        font-size: 10px;
+        color: rgba(0, 0, 0, 0.55);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="center" style="width: 100%">
+        <div class="panel">
+          <div class="qtop">
+            <p>
+              First, let’s get started with a few questions to create a plan.
+            </p>
+            <h3>What describes you the best?</h3>
+            <p class="sub">You can select up to (5)</p>
+          </div>
+
+          <div class="choice-grid" id="choices">
+            <div class="chip" data-value="Student (High school)">
+              🎓 Student (High school)
+            </div>
+            <div class="chip" data-value="Student (College)">
+              🎓 Student (College)
+            </div>
+            <div class="chip" data-value="Full-time employee">
+              💼 Full-time employee
+            </div>
+            <div class="chip" data-value="Part-time employee">
+              🕒 Part-time employee
+            </div>
+            <div class="chip" data-value="Parents">👪 Parents</div>
+            <div class="chip" data-value="Others">＋ Others</div>
+          </div>
+
+          <div class="count" id="count">0 / 5 selected</div>
+
+          <a class="next" href="q2.html" id="nextBtn">Next</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const MAX = 5;
+      const chips = Array.from(document.querySelectorAll(".chip"));
+      const countEl = document.getElementById("count");
+
+      function selected() {
+        return chips.filter((c) => c.classList.contains("selected"));
+      }
+
+      chips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          const isOn = chip.classList.contains("selected");
+          if (!isOn && selected().length >= MAX) return;
+          chip.classList.toggle("selected");
+          countEl.textContent = `${selected().length} / ${MAX} selected`;
+        });
+      });
+    </script>
+  </body>
+</html>

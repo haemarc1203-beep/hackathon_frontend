@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Personalized Data</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .title {
+        text-align: center;
+        margin: 0;
+        font-size: 28px;
+        font-weight: 900;
+        letter-spacing: 0.2px;
+        color: rgba(0, 0, 0, 0.85);
+      }
+      .subtitle {
+        text-align: center;
+        margin: 6px 0 18px;
+        font-size: 11px;
+        color: rgba(0, 0, 0, 0.55);
+      }
+
+      .grid {
+        width: min(860px, 100%);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        align-items: start;
+      }
+
+      .grid-bottom {
+        width: min(430px, 100%);
+        margin: 22px auto 0;
+      }
+
+      .p-card {
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 14px;
+        padding: 14px 16px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+      }
+
+      .p-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .meta {
+        font-size: 9px;
+        color: rgba(0, 0, 0, 0.55);
+        line-height: 1.2;
+      }
+      .stock {
+        font-size: 12px;
+        font-weight: 850;
+        margin-top: 2px;
+        color: rgba(0, 0, 0, 0.85);
+      }
+
+      .risk {
+        text-align: right;
+        min-width: 92px;
+      }
+      .risk label {
+        display: block;
+        font-size: 9px;
+        color: rgba(0, 0, 0, 0.55);
+        margin-bottom: 4px;
+      }
+      .dots {
+        display: flex;
+        gap: 4px;
+        justify-content: flex-end;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.18);
+      }
+      .dot.red {
+        background: #e93b3b;
+      }
+      .dot.gray {
+        background: rgba(0, 0, 0, 0.18);
+      }
+
+      .desc-title {
+        font-size: 9px;
+        color: rgba(0, 0, 0, 0.55);
+        margin: 8px 0 4px;
+      }
+      .desc {
+        margin: 0;
+        font-size: 10px;
+        color: rgba(0, 0, 0, 0.68);
+        line-height: 1.35;
+        white-space: pre-line;
+      }
+
+      .cta {
+        margin: 18px auto 0;
+        width: 160px;
+        height: 30px;
+        border-radius: 8px;
+        background: #111;
+        color: #fff;
+        border: 1px solid #111;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        opacity: 0.92;
+      }
+
+      @media (max-width: 760px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .grid-bottom {
+          width: min(860px, 100%);
+        }
+        .title {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+      <section class="center" style="width: 100%; gap: 10px">
+        <h1 class="title">Your Personalized Data</h1>
+        <div class="subtitle">
+          Based on your answers, here are trends from people with similar
+          profiles.
+        </div>
+
+        <!-- top 2 cards -->
+        <div class="grid">
+          <!-- Card 1 -->
+          <div class="p-card">
+            <div class="p-top">
+              <div>
+                <div class="meta">Investment Category</div>
+                <div class="stock">Stock_Name</div>
+              </div>
+              <div class="risk">
+                <label>Risk factor</label>
+                <div class="dots" aria-label="Risk factor">
+                  <span class="dot red"></span>
+                  <span class="dot red"></span>
+                  <span class="dot red"></span>
+                  <span class="dot gray"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="desc-title">Description:</div>
+            <p class="desc">
+              • Broad Market ETF • Often invested by students • Frequently held
+              by users with long term goals up to retirement
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="p-card">
+            <div class="p-top">
+              <div>
+                <div class="meta">Investment Category</div>
+                <div class="stock">Stock_Name</div>
+              </div>
+              <div class="risk">
+                <label>Risk factor</label>
+                <div class="dots" aria-label="Risk factor">
+                  <span class="dot red"></span>
+                  <span class="dot gray"></span>
+                  <span class="dot gray"></span>
+                  <span class="dot gray"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="desc-title">Description:</div>
+            <p class="desc">
+              • Low fluctuations • Often invested by full-time employees and
+              students • Frequently held by users with medium term goals (3–5
+              years)
+            </p>
+          </div>
+        </div>
+
+        <!-- bottom centered card -->
+        <div class="grid-bottom">
+          <div class="p-card">
+            <div class="p-top">
+              <div>
+                <div class="meta">Investment Category</div>
+                <div class="stock">Stock_Name</div>
+              </div>
+              <div class="risk">
+                <label>Risk factor</label>
+                <div class="dots" aria-label="Risk factor">
+                  <span class="dot red"></span>
+                  <span class="dot red"></span>
+                  <span class="dot red"></span>
+                  <span class="dot red"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="desc-title">Description:</div>
+            <p class="desc">
+              • Broad Market ETF • Often invested by students and part-time
+              employees • Frequently held by users with medium term goals (3–5
+              years)
+            </p>
+          </div>
+        </div>
+
+        <!-- button -->
+        <a class="cta" href="stock_quotes.html">Learn what this means</a>
+      </section>
+    </main>
+  </body>
+</html>

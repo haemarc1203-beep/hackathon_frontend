@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question 2</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .qtop {
+        text-align: center;
+        margin-bottom: 18px;
+      }
+      .qtop h3 {
+        margin: 0 0 14px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .col {
+        width: min(260px, 100%);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .chip {
+        height: 38px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="center" style="width: 100%">
+        <div class="panel">
+          <div class="qtop">
+            <h3>What is your primary goal for investing?</h3>
+          </div>
+
+          <div class="col" id="onePick">
+            <div class="chip" data-value="Long-term (retirement)">
+              Long-term<br />(retirement)
+            </div>
+            <div class="chip" data-value="Medium-term (3-5 years)">
+              Medium-term<br />(3-5 years)
+            </div>
+            <div class="chip" data-value="Short-term (~1 year)">
+              Short-term<br />(~1 year)
+            </div>
+            <div class="chip" data-value="Other">＋ Other</div>
+          </div>
+
+          <a class="next" href="q3.html">Next</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const chips = Array.from(document.querySelectorAll("#onePick .chip"));
+      chips.forEach((ch) => {
+        ch.addEventListener("click", () => {
+          chips.forEach((x) => x.classList.remove("selected"));
+          ch.classList.add("selected");
+        });
+      });
+    </script>
+  </body>
+</html>

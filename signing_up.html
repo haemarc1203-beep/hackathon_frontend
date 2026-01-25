@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signing up</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* 이 페이지에만 필요한 살짝 더 큰 카드 */
+      .big-card {
+        width: min(760px, 100%);
+        padding: 34px 40px;
+        border-radius: 18px;
+      }
+      .form-title {
+        text-align: center;
+        font-weight: 750;
+        margin: 0 0 16px 0;
+      }
+      .oauth {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 14px;
+      }
+      .oauth .btn {
+        width: min(360px, 100%);
+        height: 40px;
+        font-size: 13px;
+      }
+      .divider {
+        margin: 14px auto 18px;
+        width: min(520px, 100%);
+      }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        width: min(520px, 100%);
+        margin: 0 auto 12px;
+      }
+      @media (max-width: 620px) {
+        .big-card {
+          padding: 24px 18px;
+        }
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+      }
+      .one {
+        width: min(520px, 100%);
+        margin: 0 auto 12px;
+      }
+      .cta {
+        width: min(520px, 100%);
+        margin: 18px auto 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="center" style="gap: 0">
+        <div class="card big-card">
+          <h3 class="form-title">Sign up</h3>
+
+          <!-- Apple / Google -->
+          <div class="oauth">
+            <a class="btn" href="#">
+              <span
+                style="
+                  width: 14px;
+                  height: 14px;
+                  border-radius: 50%;
+                  background: #111;
+                  display: inline-block;
+                "
+              ></span>
+              Sign up with Apple
+            </a>
+            <a class="btn" href="#">
+              <span
+                style="
+                  width: 14px;
+                  height: 14px;
+                  border-radius: 50%;
+                  background: #ea4335;
+                  display: inline-block;
+                "
+              ></span>
+              Sign up with Google
+            </a>
+          </div>
+
+          <div class="divider">OR</div>
+
+          <!-- FORM -->
+          <form action="account_created.html" method="GET">
+            <div class="grid-2">
+              <div class="field" style="margin: 0">
+                <label>First name</label>
+                <input name="first" type="text" />
+              </div>
+              <div class="field" style="margin: 0">
+                <label>Last name</label>
+                <input name="last" type="text" />
+              </div>
+            </div>
+
+            <div class="field one">
+              <label>Email address</label>
+              <input name="email" type="email" />
+            </div>
+
+            <div class="field one">
+              <label>Phone number</label>
+              <input name="phone" type="tel" placeholder="(###) ###-####" />
+            </div>
+
+            <div class="cta">
+              <button
+                class="btn dark"
+                style="width: 100%; height: 48px; border: none; font-size: 15px"
+              >
+                Sign up
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

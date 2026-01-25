@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Article 2</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .wrap {
+        width: min(860px, 100%);
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 18px;
+        padding: 20px 22px 56px;
+        position: relative;
+      }
+      .wrap h2 {
+        margin: 0 0 16px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 850;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+      }
+      @media (max-width: 900px) {
+        .cards {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card2 {
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(0, 0, 0, 0.14);
+        border-radius: 10px;
+        padding: 12px 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        font-size: 10px;
+        color: rgba(0, 0, 0, 0.75);
+        line-height: 1.35;
+      }
+      .card2 h3 {
+        margin: 0 0 8px;
+        font-size: 11px;
+        font-weight: 850;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="center" style="width: 100%">
+        <div class="wrap">
+          <h2>Brokers, Clients, Stocks</h2>
+
+          <div class="cards">
+            <div class="card2">
+              <h3>What is a broker?</h3>
+              <p>
+                A broker is a licensed person or firm that buys and sells
+                securities on behalf of clients. They can provide access to
+                markets and tools for trading.
+              </p>
+            </div>
+
+            <div class="card2">
+              <h3>What is an online Trading Platform?</h3>
+              <p>
+                An online trading platform lets you place buy/sell orders
+                through an app or website. Some platforms offer charts,
+                research, and educational resources.
+              </p>
+            </div>
+
+            <div class="card2">
+              <h3>What can you buy from a broker besides stocks?</h3>
+              <p>
+                Depending on the platform, you can trade ETFs, mutual funds,
+                bonds, options, and more. Always understand fees and risk before
+                investing.
+              </p>
+            </div>
+          </div>
+
+          <a class="next" href="article3.html">Next</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

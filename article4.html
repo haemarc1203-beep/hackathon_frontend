@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Article 4</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .panelB {
+        width: min(920px, 100%);
+        padding: 18px 22px 54px; /* 아래 Next 자리 확보 */
+        position: relative;
+      }
+      .panelB h2 {
+        margin: 0 0 12px;
+        font-size: 14px;
+        font-weight: 850;
+        text-align: center;
+      }
+      .panelB p,
+      .panelB li {
+        font-size: 11px;
+        color: rgba(0, 0, 0, 0.78);
+        line-height: 1.55;
+      }
+      .panelB ul {
+        margin: 6px 0 12px 18px;
+      }
+      .panelB ol {
+        margin: 6px 0 12px 18px;
+      }
+
+      .next {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        width: 56px;
+        height: 22px;
+        border-radius: 6px;
+        background: #111;
+        color: #fff;
+        border: 1px solid #111;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        opacity: 0.92;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="center" style="width: 100%">
+        <div class="panelB">
+          <h2>Buying/selling stocks, trading, and making investments!</h2>
+
+          <p>
+            <b>Stock data:</b> You can find information about stocks in 2 ways
+          </p>
+          <ol>
+            <li><b>Real time stock quote</b></li>
+            <li><b>Delayed stock quote</b></li>
+          </ol>
+
+          <p>
+            There are different ways in which you can arrange to buy a stock
+            with your broker:
+          </p>
+          <ul>
+            <li>
+              <b>Market order:</b> executes at the current market price of the
+              stock.
+            </li>
+            <li>
+              <b>Limit order:</b> executes at or better than a price you
+              specify. If the price doesn’t reach the set price, the trade will
+              not go through.
+            </li>
+          </ul>
+
+          <p>Some brokerages offer additional options:</p>
+          <ul>
+            <li>Stop order</li>
+            <li>Stop limit order</li>
+            <li>Trailing stop order</li>
+          </ul>
+
+          <!-- ✅ Next only (goes to personalized.html you will create separately) -->
+          <a class="next" href="personalized.html">Next</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

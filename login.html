@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log in</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="center" style="gap: 24px">
+        <!-- Login Card -->
+        <div class="card" style="padding: 24px">
+          <div class="field">
+            <label>Your email</label>
+            <input type="email" />
+          </div>
+
+          <div class="field">
+            <div class="row">
+              <label>Your password</label>
+              <span class="link" id="togglePw">Hide</span>
+            </div>
+            <input id="pw" type="password" />
+          </div>
+
+          <!-- Log in button -->
+          <button class="btn dark" onclick="window.location.href='intro.html'">
+            Log in
+          </button>
+
+          <!-- Forget password -->
+          <div style="text-align: center; margin-top: 14px">
+            <a class="link" href="forget_password.html"
+              >Forget your password?</a
+            >
+          </div>
+        </div>
+
+        <!-- Create account button (separate, not overlapping) -->
+        <a
+          class="btn ghost"
+          href="signup.html"
+          style="width: 260px; height: 44px; margin-top: 6px"
+        >
+          Create an account
+        </a>
+      </section>
+    </main>
+
+    <script>
+      const pw = document.getElementById("pw");
+      const toggle = document.getElementById("togglePw");
+
+      toggle.addEventListener("click", () => {
+        const hidden = pw.type === "password";
+        pw.type = hidden ? "text" : "password";
+        toggle.textContent = hidden ? "Hide" : "Show";
+      });
+    </script>
+  </body>
+</html>

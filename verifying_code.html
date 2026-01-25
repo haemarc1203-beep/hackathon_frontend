@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set a new password</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .note {
+        font-size: 11px;
+        color: rgba(0, 0, 0, 0.55);
+        line-height: 1.35;
+        max-width: 280px;
+        margin-top: 6px;
+      }
+      .eye {
+        font-size: 12px;
+        text-decoration: underline;
+        color: rgba(0, 0, 0, 0.6);
+        cursor: pointer;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section
+        class="center"
+        style="align-items: flex-start; width: min(420px, 100%)"
+      >
+        <div style="position: relative; width: 100%">
+          <h3 style="margin: 0; font-weight: 800">Set a new password</h3>
+          <p class="note">
+            Create a new password. Ensure it differs from previous ones for
+            security
+          </p>
+        </div>
+
+        <div class="card" style="width: 100%; padding: 18px">
+          <form action="verification_code.html" method="GET">
+            <div class="field">
+              <div class="row">
+                <label>Password</label>
+                <span class="eye" data-toggle="pw1">👁</span>
+              </div>
+              <input
+                id="pw1"
+                type="password"
+                placeholder="Enter your new password"
+              />
+            </div>
+
+            <div class="field" style="margin-bottom: 16px">
+              <div class="row">
+                <label>Confirm Password</label>
+                <span class="eye" data-toggle="pw2">👁</span>
+              </div>
+              <input id="pw2" type="password" placeholder="Re-enter password" />
+            </div>
+
+            <button
+              class="btn ghost"
+              type="submit"
+              style="width: 200px; height: 40px; margin: 0 auto; display: block"
+            >
+              Update Password
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // show/hide for both password inputs
+      document.querySelectorAll("[data-toggle]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-toggle");
+          const input = document.getElementById(id);
+          input.type = input.type === "password" ? "text" : "password";
+        });
+      });
+    </script>
+  </body>
+</html>

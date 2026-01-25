@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question 1</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .panel {
+        width: min(760px, 100%);
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 18px;
+        padding: 28px 30px;
+        position: relative;
+      }
+      .q-top {
+        text-align: center;
+        margin-bottom: 18px;
+      }
+      .q-top .lead {
+        margin: 0;
+        font-size: 13px;
+        color: rgba(0, 0, 0, 0.65);
+      }
+      .q-top h3 {
+        margin: 12px 0 4px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+      .q-top .sub {
+        margin: 0;
+        font-size: 11px;
+        color: rgba(0, 0, 0, 0.55);
+      }
+
+      .choices {
+        width: min(520px, 100%);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 18px;
+      }
+      @media (max-width: 620px) {
+        .choices {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .chip {
+        height: 34px;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.18);
+        background: rgba(255, 255, 255, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.75);
+        cursor: pointer;
+        user-select: none;
+        padding: 0 12px;
+        text-align: center;
+      }
+      .chip.selected {
+        border-color: rgba(0, 0, 0, 0.35);
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        font-weight: 700;
+      }
+
+      .next {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        width: 56px;
+        height: 22px;
+        border-radius: 6px;
+        background: #111;
+        color: #fff;
+        border: 1px solid #111;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+        opacity: 0.9;
+      }
+      .count {
+        text-align: center;
+        margin-top: 12px;
+        font-size: 11px;
+        color: rgba(0, 0, 0, 0.55);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="center" style="width: 100%">
+        <div class="panel">
+          <div class="q-top">
+            <p class="lead">
+              First, let’s get started with a few questions to create a plan.
+            </p>
+            <h3>What describes you the best?</h3>
+            <p class="sub">You can select up to (5)</p>
+          </div>
+
+          <div class="choices" id="choices">
+            <div class="chip" data-value="Student (High school)">
+              🎓 Student (High school)
+            </div>
+            <div class="chip" data-value="Student (College)">
+              🎓 Student (College)
+            </div>
+            <div class="chip" data-value="Full-time employee">
+              💼 Full-time employee
+            </div>
+            <div class="chip" data-value="Part-time employee">
+              🕒 Part-time employee
+            </div>
+            <div class="chip" data-value="Parents">👪 Parents</div>
+            <div class="chip" data-value="Others">＋ Others</div>
+          </div>
+
+          <div class="count" id="count">0 / 5 selected</div>
+
+          <a class="next" id="nextBtn" href="personalized_data.html">Next</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const MAX = 5;
+      const chips = Array.from(document.querySelectorAll(".chip"));
+      const countEl = document.getElementById("count");
+      const nextBtn = document.getElementById("nextBtn");
+
+      // restore selections
+      const saved = JSON.parse(localStorage.getItem("q1_selected") || "[]");
+      chips.forEach((ch) => {
+        if (saved.includes(ch.dataset.value)) ch.classList.add("selected");
+      });
+
+      function getSelected() {
+        return chips
+          .filter((c) => c.classList.contains("selected"))
+          .map((c) => c.dataset.value);
+      }
+
+      function update() {
+        const selected = getSelected();
+        countEl.textContent = `${selected.length} / ${MAX} selected`;
+        localStorage.setItem("q1_selected", JSON.stringify(selected));
+      }
+
+      chips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          const selected = getSelected();
+          const isOn = chip.classList.contains("selected");
+
+          if (!isOn && selected.length >= MAX) return; // limit 5
+          chip.classList.toggle("selected");
+          update();
+        });
+      });
+
+      // store and continue
+      nextBtn.addEventListener("click", () => update());
+
+      update();
+    </script>
+  </body>
+</html>

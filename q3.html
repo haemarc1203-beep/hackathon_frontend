@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question 3</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .qtop {
+        text-align: center;
+        margin-bottom: 18px;
+      }
+      .qtop h3 {
+        margin: 0;
+        font-size: 12px;
+        font-weight: 800;
+        line-height: 1.2;
+      }
+      .qtop p {
+        margin: 6px 0 0;
+        font-size: 10px;
+        color: rgba(0, 0, 0, 0.55);
+      }
+      .col {
+        width: min(260px, 100%);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .chip {
+        height: 34px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="center" style="width: 100%">
+        <div class="panel">
+          <div class="qtop">
+            <h3>
+              If you currently have a bank account,<br />which types of accounts
+              do you have?
+            </h3>
+            <p>Select all that apply</p>
+          </div>
+
+          <div class="col">
+            <div class="chip">Checking Account</div>
+            <div class="chip">Savings Account</div>
+            <div class="chip">Student Account</div>
+            <div class="chip">Credit Card</div>
+            <div class="chip">Other</div>
+          </div>
+
+          <a class="next" href="industry.html">Next</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      document.querySelectorAll(".col .chip").forEach((chip) => {
+        chip.addEventListener("click", () => chip.classList.toggle("selected"));
+      });
+    </script>
+  </body>
+</html>
