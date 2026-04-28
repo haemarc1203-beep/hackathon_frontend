@@ -7,14 +7,11 @@
     <link rel="stylesheet" href="styles.css" />
 
     <style>
-      /* styles.css가 overflow hidden 같은 거 해도 버튼/메뉴가 안 잘리게 */
       body,
       .container,
       .center {
         overflow: visible !important;
       }
-
-      /* 가운데 배치 */
       .wrap {
         width: min(860px, 100%);
         margin: 0 auto;
@@ -31,7 +28,6 @@
         color: rgba(0, 0, 0, 0.85);
       }
 
-      /* ✅ 드롭다운 + Next 한 줄 */
       .dd-row {
         display: flex;
         align-items: center;
@@ -72,8 +68,6 @@
         line-height: 1;
         flex: 0 0 auto;
       }
-
-      /* 메뉴 */
       .menu {
         width: 100%;
         margin-top: 8px;
@@ -110,14 +104,13 @@
         background: rgba(173, 223, 245, 0.55);
       }
 
-      /* 체크박스는 기본 사용 (너가 원하면 커스텀으로 바꿔줄게) */
       .row input {
         width: 14px;
         height: 14px;
         accent-color: #5b8dff;
       }
 
-      /* ✅ Next 버튼(드롭다운 옆) */
+
       .next-inline {
         width: 90px;
         height: 34px;
@@ -182,7 +175,7 @@
               </div>
             </div>
 
-            <!-- ✅ Next 버튼: 드롭다운 바로 옆 -->
+
             <a class="next-inline" href="article1.html" id="nextBtn">Next</a>
           </div>
         </div>
